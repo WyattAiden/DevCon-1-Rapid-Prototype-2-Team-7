@@ -32,7 +32,21 @@ public class playerController : MonoBehaviour
         //Player1 Movement
         if (Input.GetKey(KeyCode.A))
         {
-            
+            playerRB2D1.transform.position = player1Location + new Vector2(-moveSpeed, 0);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            playerRB2D1.transform.position = player1Location + new Vector2(moveSpeed, 0);
+        }
+
+        //Player2 Movement
+        if (Input.GetKey(KeyCode.LeftArrow))
+        { 
+            playerRB2D2.transform.position = player2Location + new Vector2(-moveSpeed, 0);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            playerRB2D2.transform.position = player2Location + new Vector2(moveSpeed, 0);
         }
     }
 }
