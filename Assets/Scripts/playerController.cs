@@ -13,10 +13,19 @@ public class playerController : MonoBehaviour
     private Vector2 player1Location;
     private Vector2 player2Location;
 
+    //Attacks
+    public Collider2D player1Hurt;
+    public Collider2D player2Hurt;
+    public SpriteRenderer player1Swing;
+    public SpriteRenderer player2Swing;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player1Hurt.enabled = false;
+        player2Hurt.enabled = false;
+        player1Swing.enabled = false;
+        player2Swing.enabled = false;
     }
 
     // Update is called once per frame
@@ -25,6 +34,12 @@ public class playerController : MonoBehaviour
         //Track player locations
         player1Location = new Vector2(playerRB2D1.position.x, playerRB2D1.position.y);
         player2Location = new Vector2(playerRB2D2.position.x, playerRB2D2.position.y);
+
+        //Player1 Attack
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Attack(player1Hurt, player1Swing);
+        }
     }
 
     private void FixedUpdate()
@@ -48,5 +63,10 @@ public class playerController : MonoBehaviour
         {
             playerRB2D2.transform.position = player2Location + new Vector2(moveSpeed, 0);
         }
+    }
+    private void Attack(Collider2D collider, SpriteRenderer spriteRenderer)
+    {
+        collider.enabled = true;
+        spriteRenderer.enabled = true;
     }
 }
